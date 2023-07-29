@@ -3,7 +3,7 @@ import { FC } from "react";
 
 const buttonClasses = cva(
   [
-    "rounded-3xl",
+    "rounded-xl",
     "font-bold",
     "hover:scale-110",
     "active:scale-100",
@@ -15,7 +15,7 @@ const buttonClasses = cva(
     variants: {
       intent: {
         primary: [
-          "bg-violet-500",
+          "bg-emerald-700",
           "text-white",
           "border-transparent",
           "hover:bg-violet-600",
