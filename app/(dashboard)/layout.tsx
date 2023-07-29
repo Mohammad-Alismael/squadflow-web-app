@@ -14,7 +14,6 @@ export default function DashboardRootLayout({ children }: PropsWithChildren) {
       <body className="h-screen	w-screen bg-[#F2F0EB]">
         <Sidebar />
         <div className="h-screen w-5/6 bg-[#F2F0EB] float-right">
-
           {children}
         </div>
       </body>

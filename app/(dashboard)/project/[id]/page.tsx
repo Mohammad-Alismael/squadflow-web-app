@@ -4,6 +4,9 @@ import { db } from "@/lib/db";
 import { cookies } from "next/headers";
 import NavbarSkeleton from "@/components/NavbarSkeleton";
 import Navbar from "@/components/Navbar";
+import Column from "../components/Column";
+import Button from "@/components/Button";
+import TaskDetails from "../components/TaskDetails";
 
 const getData = async (id: string) => {
   const user = await getUserFromCookie(cookies());
@@ -14,11 +17,17 @@ const getData = async (id: string) => {
     },
   });
 };
+type Props = {
+  params: {
+    id?: string;
+  };
+  searchParams?: {
+    task?: string;
+  };
+};
+export default async function ProjectPage({ params }: Props) {
+  const project = await getData(params.id as string);
 
-export default async function ProjectPage({ params }: any) {
-  const project = await getData(params.id);
-
-  // @ts-ignore
   return (
     <>
       <Suspense fallback={<NavbarSkeleton />}>
@@ -28,8 +37,19 @@ export default async function ProjectPage({ params }: any) {
           </h1>
         </Navbar>
       </Suspense>
-      <div className="h-full overflow-y-auto pr-6 w-1/1">
-        <p>project id : {project?.id}</p>
+      <div className="h-full w-full overflow-y-auto px-4 flex flex-row">
+        <Column cards={project?.tasks} />
+        <div className="w-1/4">
+          <Button
+            intent="secondary"
+            className="w-full capitalize bg-transparent"
+          >
+            + new column
+          </Button>
+        </div>
+        <Suspense fallback={<p>loadings</p>}>
+          <TaskDetails />
+        </Suspense>
       </div>
     </>
   );

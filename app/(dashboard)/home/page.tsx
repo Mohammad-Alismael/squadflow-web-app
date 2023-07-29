@@ -1,11 +1,9 @@
 import React, { PropsWithChildren, Suspense } from "react";
 import ProjectCard from "@/components/ProjectCard";
 import { db } from "@/lib/db";
-import { delay } from "@/lib/async";
 import { getUserFromCookie } from "@/lib/auth";
 import { cookies } from "next/headers";
 import Link from "next/link";
-import TaskCard from "@/components/TaskCard";
 import NewProject from "@/components/NewProject";
 import { User } from "../../../types";
 import NavbarSkeleton from "@/components/NavbarSkeleton";

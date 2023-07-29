@@ -4,7 +4,7 @@ import { getUserFromCookie } from "@/lib/auth";
 import { cookies } from "next/headers";
 import { User } from "../types";
 
-async function Navbar({children}) {
+function Navbar({children}) {
   return (
     <div className="px-4 h-24 flex gap-2 justify-between items-center">
       <div>

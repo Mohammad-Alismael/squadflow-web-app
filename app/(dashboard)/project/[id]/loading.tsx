@@ -1,5 +1,5 @@
 export default function Loading() {
     return (
-       <p>loading ...</p>
+       <p>project page loading ...</p>
     );
 }

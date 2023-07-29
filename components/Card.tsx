@@ -3,13 +3,15 @@ import React from "react";
 type PropsType = {
   className: string;
 };
-const Card = ({ className, children }: React.PropsWithChildren<PropsType>) => {
+const Card = ({
+  className,
+  children,
+  ...props
+}: React.PropsWithChildren<PropsType>) => {
   return (
     <div
-      className={clsx(
-        "rounded-xl px-10 py-4 drop-shadow bg-white",
-        className
-      )}
+      className={clsx("rounded-xl px-10 py-4 drop-shadow bg-white", className)}
+      {...props}
     >
       {children}
     </div>

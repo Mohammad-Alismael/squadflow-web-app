@@ -25,7 +25,7 @@ const ProjectCard: FC<{ project: ProjectWithTasks }> = ({ project }) => {
         Progress
       </div>
       <div className="right-[18px] top-[98px] absolute text-teal-700 text-xs font-medium leading-3">
-        {progress}%
+        {isNaN(progress) ? 0 : progress}%
       </div>
       <div className="w-32 h-2 right-[15px] top-[118px] absolute bg-zinc-300 rounded-sm border" />
       <div

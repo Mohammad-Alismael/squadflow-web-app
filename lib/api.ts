@@ -1,4 +1,6 @@
 import { User } from "../types";
+import {handleLoginFB} from "@/lib/auth";
+import {fromStateType} from "@/components/AuthForm";
 
 type fetcherType = {
   url: string;
@@ -35,13 +37,14 @@ export const register = async (user: User) => {
   });
 };
 
-export const signin = async (user: User) => {
+export const signin = async (user: fromStateType) => {
   return fetcher({
     url: "/api/signin",
     method: "POST",
     body: user,
     json: false,
   });
+  // return handleLoginFB(user.email, user.password)
 };
 
 export const createNewProject = (name: string) => {

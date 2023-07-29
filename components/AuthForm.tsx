@@ -25,6 +25,13 @@ const signinContent = {
   buttonText: "Sign In",
 };
 
+export type fromStateType = {
+  email: string,
+  password: string,
+  firstName?: string,
+  lastName?: string,
+};
+
 const initial = { email: "", password: "", firstName: "", lastName: "" };
 
 export default function AuthForm({ mode }: { mode: "register" | "signin" }) {
@@ -38,7 +45,7 @@ export default function AuthForm({ mode }: { mode: "register" | "signin" }) {
       e.preventDefault();
 
       try {
-        setLoading(true)
+        setLoading(true);
         if (mode === "register") {
           await register(formState);
         } else {
@@ -49,7 +56,7 @@ export default function AuthForm({ mode }: { mode: "register" | "signin" }) {
       } catch (e) {
         setError(`Could not ${mode}`);
       } finally {
-        setLoading(false)
+        setLoading(false);
         setFormState({ ...initial });
       }
     },
@@ -140,7 +147,9 @@ export default function AuthForm({ mode }: { mode: "register" | "signin" }) {
               </span>
             </div>
             <div>
-              <Button intent="secondary" loading={loading}>{content.buttonText}</Button>
+              <Button intent="secondary" loading={loading}>
+                {content.buttonText}
+              </Button>
             </div>
           </div>
         </form>
